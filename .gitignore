@@ -1,8 +1,5 @@
-build/
+build/**
 HELP.md
-!.mvn/wrapper/maven-wrapper.jar
-mvnw.cmd
-mvnw
 
 # **/test/
 /node_modules/
@@ -16,15 +13,19 @@ mvnw
 .settings/
 
 # IntelliJ
+.idea/
 **/out/
 *.ipr
 *.iml
 *.iws
-.idea/
 
 # Maven
 target/
 **/target/
+log/
+!.mvn/wrapper/maven-wrapper.jar
+mvnw.cmd
+mvnw
 
 # Mac
 .DS_Store/
