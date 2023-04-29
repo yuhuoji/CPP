@@ -45,7 +45,8 @@ public:
         if (wus[i] > wu) {
             return mons[i] + process(wus, mons, i + 1, wu + wus[i]);
         }
-        return min(process(wus, mons, i + 1, wu), mons[i] + process(wus, mons, i + 1, wu + wus[i]));
+        return min(process(wus, mons, i + 1, wu),
+                   mons[i] + process(wus, mons, i + 1, wu + wus[i]));
     }
 };
 
