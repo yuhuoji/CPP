@@ -23,7 +23,7 @@ public:
     ~ColorLeftRight();
     int minPaint(String s) {}
 };
-
+//TODO
 int main() {}
 
 ColorLeftRight::ColorLeftRight() {}
