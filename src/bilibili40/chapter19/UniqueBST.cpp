@@ -68,6 +68,6 @@ public:
 
 int main() {
     UniqueBST uniqueBST;
-    cout << uniqueBST.process(3) << " , " << uniqueBST.numTrees(3) << endl;
+    cout << uniqueBST.process(2) << " , " << uniqueBST.numTrees(2) << endl;
     return 0;
 }
