@@ -6,12 +6,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 class ParenthesesDeep {
 public:
-    ParenthesesDeep(/* args */);
-    ~ParenthesesDeep();
     static int maxLength(string s) {
         if (s.empty()) { // empty string
             return 0;
@@ -33,10 +30,6 @@ public:
         return res;
     }
 };
-
-ParenthesesDeep::ParenthesesDeep() {}
-
-ParenthesesDeep::~ParenthesesDeep() {}
 
 int main() {
     string str = "(((())";

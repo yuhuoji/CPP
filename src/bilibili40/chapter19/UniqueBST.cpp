@@ -1,7 +1,7 @@
 /**
  * @date 2023-05-01
  * 有N个相同的节点，可以组成多少种不同的二叉树
- * TODO leetcode 96
+ * leetcode 96
  */
 #include <iostream>
 #include <vector>
@@ -16,7 +16,7 @@ private:
         int value;
         Node* left;
         Node* right;
-        Node();
+        Node(){};
         Node(int value) {
             this->value = value;
         };

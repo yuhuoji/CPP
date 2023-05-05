@@ -6,7 +6,6 @@ class Magic {
 private:
     /* data */
 public:
-    Magic(/* args */);
-    ~Magic();
+    
 };
 int main() {}

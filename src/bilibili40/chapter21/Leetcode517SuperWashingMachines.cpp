@@ -7,11 +7,7 @@
 #include <iostream>
 #include <vector>
 class Solution {
-private:
-    /* data */
 public:
-    Solution(/* args */);
-    ~Solution();
     /**
      *
      */
