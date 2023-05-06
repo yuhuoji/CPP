@@ -3,6 +3,7 @@
  * 347. Top K Frequent Elements
  * 前 k 个高频元素
  * std:set
+ * TODO
  */
 #include <functional>
 #include <iostream>
@@ -40,7 +41,18 @@ public:
         return ans;
     }
 };
+
 int main() {
     vector<int> nums = {1, 1, 1, 2, 2, 3};
-    cout<< Solution::topKFrequent(nums, 2) << endl;
+
+    for (const auto& i : nums) { // const 引用，不可修改
+        cout << i << ' ';
+    }
+    cout << endl;
+
+    vector<int> ans = Solution::topKFrequent(nums, 2);
+    for (auto i = ans.begin(); i != ans.end(); i++) {
+        cout << *i << ' ';
+    }
+    cout << endl;
 }
