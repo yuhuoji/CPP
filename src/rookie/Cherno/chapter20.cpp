@@ -6,11 +6,18 @@
 #include <iostream>
 using namespace std;
 class Log {
+public:
+    const int logLevelError = 0;
+    const int logLevelWarning = 1;
+    const int logLevelInfo = 2;
+
 private:
-    /* data */
+    logLevel = logLevelInfo;
+
 public:
     Log(/* args */) {}
     ~Log() {}
 };
 int main() {
+    Log log;
 }
