@@ -4,7 +4,7 @@
  * TODO
  */
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -34,19 +34,22 @@ private:
         //[preorderRoot]，[preorderLeft+1 ~ preorder + leftSubtreeSize]，[preorder + leftSubtreeSize + 1 ~ preorderRight]
         // 中序 [左子树，root，右子树]
         //[inorderLeft ~ inorderRoot - 1]，[inorderRoot]，[inorderRoot ~ inorderRight]
-        root->left = myBuildTree(preorder, inorder, preorderLeft + 1, preorder + leftSubtreeSize, inorderLeft, inorderRoot - 1);
+        root->left = myBuildTree(preorder, inorder, preorderLeft + 1, preorderLeft + leftSubtreeSize, inorderLeft, inorderRoot - 1);
 
-        root->right = myBuildTree(preorder, inorder, preorder + leftSubtreeSize + 1, preorderRight, inorderRoot, inorderRight);
+        root->right = myBuildTree(preorder, inorder, preorderLeft + leftSubtreeSize + 1, preorderRight, inorderRoot+1, inorderRight);
 
         return root;
     }
 
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        int preorderSize = preorder.size(); // 哈希表
+        int n = preorder.size(); // 哈希表
         for (int i = 0; i < n; i++) {
-            index[inorder[i]] = i
+            index[inorder[i]] = i;
         }
         return myBuildTree(preorder, inorder, 0, n - 1, 0, n - 1);
     }
 };
+int main(){
+    
+}
