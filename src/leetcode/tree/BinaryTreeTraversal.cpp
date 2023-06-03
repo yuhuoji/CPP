@@ -1,26 +1,27 @@
 /**
  * 94. Binary Tree Inorder Traversal
+ * TODO
  */
 #include <iostream>
 #include <stack>
 #include <vector>
 
 using namespace std;
-struct TreeNode {
+struct Node {
     int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode()
+    Node* left;
+    Node* right;
+    Node()
         : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x)
+    Node(int x)
         : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode* left, TreeNode* right)
+    Node(int x, Node* left, Node* right)
         : val(x), left(left), right(right) {}
 };
 
 class Solution1 {
 private:
-    void recursiveorderProcess(vector<int>& list, TreeNode* root) {
+    void recursiveorderProcess(vector<int>& list, Node* root) {
         if (root == nullptr) {
             return;
         }
@@ -30,7 +31,7 @@ private:
         recursiveorderProcess(list, root->right);
         list.push_back(root->val); // 后序
     }
-    void preorderProcess(vector<int>& list, TreeNode* root) {
+    void preorderProcess(vector<int>& list, Node* root) {
         if (root == nullptr) {
             return;
         }
@@ -38,7 +39,7 @@ private:
         preorderProcess(list, root->left);
         preorderProcess(list, root->right);
     }
-    void inorderProcess(vector<int>& list, TreeNode* root) {
+    void inorderProcess(vector<int>& list, Node* root) {
         if (root == nullptr) {
             return;
         }
@@ -46,7 +47,7 @@ private:
         list.push_back(root->val); // 中序
         inorderProcess(list, root->right);
     }
-    void postorderProcess(vector<int>& list, TreeNode* root) {
+    void postorderProcess(vector<int>& list, Node* root) {
         if (root == nullptr) {
             return;
         }
@@ -59,22 +60,22 @@ public:
     /**
      * 递归
      */
-    vector<int> recursiveorderTraversal(TreeNode* root) {
+    vector<int> recursiveorderTraversal(Node* root) {
         vector<int> list;
         recursiveorderProcess(list, root);
         return list;
     }
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> preorderTraversal(Node* root) {
         vector<int> list;
         preorderProcess(list, root);
         return list;
     }
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversal(Node* root) {
         vector<int> list;
         inorderProcess(list, root);
         return list;
     }
-    vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(Node* root) {
         vector<int> list;
         process(list, root);
         return list;
@@ -86,9 +87,9 @@ public:
     /**
      * 手动维护
      */
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversal(Node* root) {
         vector<int> res;
-        stack<TreeNode*> stk;
+        stack<Node*> stk;
         res.push_back(root->val);
         stk.push(root);
         while (root != nullptr || !stk.empty()) {

@@ -16,15 +16,15 @@
 #include <iostream>
 using namespace std;
 
-struct TreeNode {
+struct Node {
     int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode()
+    Node* left;
+    Node* right;
+    Node()
         : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x)
+    Node(int x)
         : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode* left, TreeNode* right)
+    Node(int x, Node* left, Node* right)
         : val(x), left(left), right(right) {}
 };
 
@@ -35,12 +35,12 @@ public:
     /**
      * morris注释
      */
-    void morris(TreeNode* head) {
+    void morris(Node* head) {
         if (head == nullptr) {
             return;
         }
-        TreeNode* cur = head;
-        TreeNode* mostRight = nullptr;
+        Node* cur = head;
+        Node* mostRight = nullptr;
         while (cur != nullptr) {
             mostRight = cur->left;                                        // cur是否有左树
             if (mostRight != nullptr) {                                   // cur有左树

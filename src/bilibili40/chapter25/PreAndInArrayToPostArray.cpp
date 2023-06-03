@@ -22,28 +22,31 @@ private:
             return;
         }
         post[postj] = pre[prei]; // 先序第一个是根节点
-        int find = ini;
+        int find = ini;          // 在中序中找到根节点
         for (; find < inj; find++) {
             if (in[find] == pre[prei]) {
                 break;
             }
         }
-        //pre   [prei prei+1... prej]
-        //in    [ini  (find - ini个)    find inj] find - ini左树有多少
-        //post  [posti postj]
-        set(pre, in, post, pre + 1, pre + find - ini,
-         ini, find - 1, 
-         posti, posti + find - ini-1); //左子树
-        set(pre, in, post, pre + find - ini + 1, prej,
-         find + 1, inj,
-          posti + find - ini, postj-1); //右子树
+        //a~b有b-a+1个， 从a开始有b-a+1个 是从a~
+        //到b有b-a+1个 是从~b
+        // pre   [prei, prei+1 ... prej]
+        // in    [ini, find-1, find, find+1, inj] 左树有(find - ini)个, 右树有(inj-find)个
+        // post  [posti ... postj-1, postj]
+        set(pre, in, post,
+            prei + 1, pre + find - ini,
+            ini, find - 1,
+            posti, posti + find - ini - 1); // 左子树
+        set(pre, in, post,
+            prei + find - ini + 1, prej,
+            find + 1, inj,
+            posti + find - ini, postj - 1); // 右子树
     }
 
 public:
-    Solution(/* args */) {}
-    ~Solution() {}
     /**
      * 根据先序和中序数组，返回后序数组
+     * 中序遍历可以用哈希表优化, 成O(N)
      */
     vector<int> getPostArray(vector<int>& pre, vector<int>& in) {
         if (pre.size() == 0 || in.size() == 0) {

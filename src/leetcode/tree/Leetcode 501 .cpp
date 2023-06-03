@@ -8,21 +8,21 @@
 using namespace std;
 
 // Definition for a binary tree node.
-struct TreeNode {
+struct Node {
     int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode()
+    Node* left;
+    Node* right;
+    Node()
         : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x)
+    Node(int x)
         : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode* left, TreeNode* right)
+    Node(int x, Node* left, Node* right)
         : val(x), left(left), right(right) {}
 };
 
 class Solution {
 private:
-    void dfs(TreeNode* root) {
+    void dfs(Node* root) {
         if (root == nullptr) {
             return;
         }
@@ -54,7 +54,7 @@ public:
     int count;    // 当前次数
     int maxCount; // 最大次数
 
-    vector<int> findMode1(TreeNode* root) {
+    vector<int> findMode1(Node* root) {
         dfs(root);
         return answer;
     }
@@ -62,9 +62,9 @@ public:
     /**
      * morris遍历
      */
-    vector<int> findMode2(TreeNode* root) {
-        TreeNode* cur = root;
-        TreeNode* mostRight = nullptr;
+    vector<int> findMode2(Node* root) {
+        Node* cur = root;
+        Node* mostRight = nullptr;
         while (cur != nullptr) {
             mostRight = cur->left;
             if (mostRight == nullptr) { // 无左树
