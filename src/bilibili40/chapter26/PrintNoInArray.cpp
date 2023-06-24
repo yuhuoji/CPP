@@ -19,10 +19,12 @@ class Solution {
 private:
     /**
      * 让value放在arr[value-1], 并继续直到终止
+     *      1 2 3 ...
+     * arr[ 0,1,2 ...]
      */
     static void modify(int value, vector<int>& arr) {
         while (arr[value - 1] != value) {
-            int temp = arr[value - 1];
+            int temp = arr[value - 1]; // 原来的值
             arr[value - 1] = value;
             value = temp;
         }
@@ -44,9 +46,10 @@ public:
                 cout << i + 1 << " ";
             }
         }
+        cout << endl;
     }
 };
-int main(){
-    vector<int> arr{3,2,3,5,6,1,6};
+int main() {
+    vector<int> arr{3, 2, 3, 5, 6, 1, 6};
     Solution::printNumberNoInArray(arr);
 }
