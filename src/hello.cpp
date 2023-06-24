@@ -1,5 +1,13 @@
+// #include <algorithm>
+// #include <cstdio>
+
+// #include <fstream>
 #include <iostream>
+// #include <cfloat>
+// #include <float.h>
+// #include <bits/stdc++.h>
+using namespace std;
 int main() {
-    std::cout << "Come on HuaWei, Come on China" << std::endl;
+    cout << "111" << endl;
     return 0;
 }
