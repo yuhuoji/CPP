@@ -10,18 +10,18 @@
 #include <vector>
 
 using namespace std;
-class Node {
+class TreeNode {
 private:
 public:
     string name;
-    map<string, Node> nextMap; // 用有序表来顺序输出
-    Node(){};
-    Node(const string name)
+    map<string, TreeNode> nextMap; // 用有序表来顺序输出
+    TreeNode(){};
+    TreeNode(const string name)
         : name(name){};
-    ~Node(){};
+    ~TreeNode(){};
 };
-Node generateFolderTree(vector<string>& folderPaths) {
-    Node head("");                        // 根目录
+TreeNode generateFolderTree(vector<string>& folderPaths) {
+    Node head("");                             // 根目录
     for (const auto& foldPath : folderPaths) { // 遍历绝对路径
         vector<std::string> paths;
 
@@ -34,7 +34,7 @@ Node generateFolderTree(vector<string>& folderPaths) {
         Node cur = head;
         for (int i = 0; i < paths.size(); i++) {
             if (cur.nextMap.find(paths[i]) == cur.nextMap.end()) {
-                //新建Node(paths[i])并加入nextMap
+                // 新建Node(paths[i])并加入nextMap
 
                 cur.nextMap[paths[i]] = Node(paths[i]);
             }

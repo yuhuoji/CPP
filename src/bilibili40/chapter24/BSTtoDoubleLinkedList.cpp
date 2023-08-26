@@ -11,7 +11,7 @@ private:
     /**
      * 返回头和尾
      */
-    Info process(Node* node) {
+    Info process(TreeNode* node) {
         if (node == nullptr) {
             return Info(nullptr, nullptr);
         }
@@ -34,7 +34,7 @@ public:
     /**
      * 返回双向链表的头节点
      */
-    Node* treeToDoublyList(Node* root) {
+    TreeNode* treeToDoublyList(TreeNode* root) {
         if (root == nullptr) {
             return nullptr;
         }
@@ -43,27 +43,27 @@ public:
 };
 
 struct Info {
-    Node* start;
-    Node* end;
-    Info(Node* start, Node* end)
+    TreeNode* start;
+    TreeNode* end;
+    Info(TreeNode* start, TreeNode* end)
         : start(start), end(end) {}
 };
 
-class Node {
+class TreeNode {
 public:
     int val;
-    Node* left;
-    Node* right;
+    TreeNode* left;
+    TreeNode* right;
 
-    Node() {}
+    TreeNode() {}
 
-    Node(int _val) {
+    TreeNode(int _val) {
         val = _val;
         left = NULL;
         right = NULL;
     }
 
-    Node(int _val, Node* _left, Node* _right) {
+    TreeNode(int _val, TreeNode* _left, TreeNode* _right) {
         val = _val;
         left = _left;
         right = _right;

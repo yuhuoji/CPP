@@ -7,27 +7,27 @@
 #include <vector>
 
 using namespace std;
-struct Node {
+struct TreeNode {
     int val;
-    Node* left;
-    Node* right;
-    Node()
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode()
         : val(0), left(nullptr), right(nullptr) {}
-    Node(int x)
+    TreeNode(int x)
         : val(x), left(nullptr), right(nullptr) {}
-    Node(int x, Node* left, Node* right)
+    TreeNode(int x, TreeNode* left, TreeNode* right)
         : val(x), left(left), right(right) {}
 };
 
 class Solution {
 public:
-    vector<vector<int>> levelOrder(Node* root) {
+    vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> res;
         if (!root) { // root == nullptr
             return res;
         }
 
-        queue<Node*> q;
+        queue<TreeNode*> q;
         q.push(root);
         while (!q.empty()) {
             int currentLevelSize = q.size();             // 当前层的节点个数
@@ -50,11 +50,11 @@ public:
 
 int main() {
     // 创建二叉树
-    Node* root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
 
     //    1
     //  2   3

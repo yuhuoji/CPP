@@ -1,6 +1,6 @@
 /**
  * 144, 94, 145
- * 
+ *
  * TODO
  */
 #include <iostream>
@@ -8,21 +8,21 @@
 #include <vector>
 
 using namespace std;
-struct Node {
+struct TreeNode {
     int val;
-    Node* left;
-    Node* right;
-    Node()
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode()
         : val(0), left(nullptr), right(nullptr) {}
-    Node(int x)
+    TreeNode(int x)
         : val(x), left(nullptr), right(nullptr) {}
-    Node(int x, Node* left, Node* right)
+    TreeNode(int x, TreeNode* left, TreeNode* right)
         : val(x), left(left), right(right) {}
 };
 
 class Solution1 {
 private:
-    void recursiveorderProcess(vector<int>& list, Node* root) {
+    void recursiveorderProcess(vector<int>& list, TreeNode* root) {
         if (root == nullptr) {
             return;
         }
@@ -32,7 +32,7 @@ private:
         recursiveorderProcess(list, root->right);
         list.push_back(root->val); // 后序
     }
-    void preorderProcess(vector<int>& list, Node* root) {
+    void preorderProcess(vector<int>& list, TreeNode* root) {
         if (root == nullptr) {
             return;
         }
@@ -40,7 +40,7 @@ private:
         preorderProcess(list, root->left);
         preorderProcess(list, root->right);
     }
-    void inorderProcess(vector<int>& list, Node* root) {
+    void inorderProcess(vector<int>& list, TreeNode* root) {
         if (root == nullptr) {
             return;
         }
@@ -48,7 +48,7 @@ private:
         list.push_back(root->val); // 中序
         inorderProcess(list, root->right);
     }
-    void postorderProcess(vector<int>& list, Node* root) {
+    void postorderProcess(vector<int>& list, TreeNode* root) {
         if (root == nullptr) {
             return;
         }
@@ -61,22 +61,22 @@ public:
     /**
      * 递归
      */
-    vector<int> recursiveorderTraversal(Node* root) {
+    vector<int> recursiveorderTraversal(TreeNode* root) {
         vector<int> list;
         recursiveorderProcess(list, root);
         return list;
     }
-    vector<int> preorderTraversal(Node* root) {
+    vector<int> preorderTraversal(TreeNode* root) {
         vector<int> list;
         preorderProcess(list, root);
         return list;
     }
-    vector<int> inorderTraversal(Node* root) {
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> list;
         inorderProcess(list, root);
         return list;
     }
-    vector<int> postorderTraversal(Node* root) {
+    vector<int> postorderTraversal(TreeNode* root) {
         vector<int> list;
         postorderProcess(list, root);
         return list;
@@ -88,12 +88,12 @@ public:
 class Solution2 {
 public:
     // 前序 中左右
-    vector<int> preorderTraversal(Node* root) {
+    vector<int> preorderTraversal(TreeNode* root) {
         vector<int> res;
         if (root == nullptr) { // 空
             return res;
         }
-        stack<Node*> stk;
+        stack<TreeNode*> stk;
         while (root != nullptr || !stk.empty()) {
             if (root != nullptr) {
                 res.push_back(root->val); // 处理当前节点
@@ -108,12 +108,12 @@ public:
         return res;
     }
     // 中序 左中右
-    vector<int> inorderTraversal(Node* root) {
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         if (root == nullptr) { // 空
             return res;
         }
-        stack<Node*> stk;
+        stack<TreeNode*> stk;
         while (root != nullptr || !stk.empty()) {
             if (root != nullptr) { //
                 stk.push(root);
@@ -127,9 +127,9 @@ public:
         }
         return res;
     }
-    vector<int> inorderTraversal2(Node* root) {
+    vector<int> inorderTraversal2(TreeNode* root) {
         vector<int> res;
-        stack<Node*> stk;
+        stack<TreeNode*> stk;
         res.push_back(root->val);
         stk.push(root);
         while (root != nullptr || !stk.empty()) {
@@ -145,25 +145,25 @@ public:
         return res;
     }
     // 后序 左右中
-    vector<int> postorderTraversal(Node* root) {
+    vector<int> postorderTraversal(TreeNode* root) {
         vector<int> res;
         if (root == nullptr) {
             return res;
         }
-        stack<Node*> stk;
-        Node* lastVisited = nullptr; // 保存上次遍历到的节点
+        stack<TreeNode*> stk;
+        TreeNode* lastVisited = nullptr; // 保存上次遍历到的节点
 
         while (root != nullptr || !stk.empty()) {
             if (root != nullptr) {
                 stk.push(root);
                 root = root->left;                                                // root = nullptr 左子树
             } else {                                                              // 遍历完左或左右中了
-                Node* topNode = stk.top();                                        // 当前节点
+                TreeNode* topNode = stk.top();                                    // 当前节点
                 if (topNode->right != nullptr && topNode->right != lastVisited) { // 遍历完左子树
                     root = topNode->right;                                        // 右子树
                 } else {                                                          // 右子树遍历完了
                     stk.pop();
-                    res.push_back(topNode->val);                                              // 处理当前节点
+                    res.push_back(topNode->val);                                  // 处理当前节点
                     lastVisited = topNode;
                 }
             }
@@ -174,11 +174,11 @@ public:
 
 int main() {
     // 创建二叉树
-    Node* root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
 
     //    1
     //  2   3
@@ -186,7 +186,7 @@ int main() {
 
     Solution2 s2;
     vector<int> res = s2.postorderTraversal(root);
-    //输出res
+    // 输出res
     for (int i = 0; i < res.size(); i++) {
         printf("%d ", res[i]);
     }

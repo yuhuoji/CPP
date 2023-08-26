@@ -6,15 +6,15 @@
 #include <vector>
 
 using namespace std;
-struct Node {
+struct TreeNode {
     int val;
-    Node* left;
-    Node* right;
-    Node()
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode()
         : val(0), left(nullptr), right(nullptr) {}
-    Node(int x)
+    TreeNode(int x)
         : val(x), left(nullptr), right(nullptr) {}
-    Node(int x, Node* left, Node* right)
+    TreeNode(int x, TreeNode* left, TreeNode* right)
         : val(x), left(left), right(right) {}
 };
 
@@ -24,7 +24,7 @@ private:
      * node在第level层，h是总的深度
      * 返回以node为头节点的树，节点总数是多少
      */
-    int bs(Node* node, int level, const int h) {
+    int bs(TreeNode* node, int level, const int h) {
         if (level == h) {
             return 1;
         }
@@ -40,7 +40,7 @@ private:
      * 返回最大深度
      * 走左边界
      */
-    int mostLeftLevel(Node* node, int level) {
+    int mostLeftLevel(TreeNode* node, int level) {
         while (node != nullptr) {
             ++level;
             node = node->left;
@@ -54,7 +54,7 @@ public:
      * 以head为头的树，是完全二叉树
      * 递归O(h^2) = O((logN)2)
      */
-    int nodeNum(Node* head) {
+    int nodeNum(TreeNode* head) {
         if (head == nullptr) {
             return 0;
         }
