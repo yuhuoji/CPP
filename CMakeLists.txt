@@ -20,5 +20,8 @@ add_executable(test_1 test/test_1.cpp)
 set_target_properties(test_1 PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(test test/test.cpp)
 set_target_properties(test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+
 add_executable(SwordOffer_58_Reverse-Left-Words leetcode/SwordOffer_58_Reverse-Left-Words.cpp)
 set_target_properties(SwordOffer_58_Reverse-Left-Words PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_102_binary-tree-level-order-traversal leetcode/editor/cn/Leetcode_102_binary-tree-level-order-traversal.cpp)
+set_target_properties(Leetcode_102_binary-tree-level-order-traversal PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")

@@ -115,6 +115,6 @@
 #include <unordered_set>
 
 // Common
-#include "leetcode.h"
+#include "../leetcode.h"
 
 #endif

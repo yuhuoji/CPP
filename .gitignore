@@ -1,8 +1,10 @@
+#leetcode plugin
+leetcode/editor/cn/doc/content/
 cmake-build-debug/
-build/
+*.exe
 
 # **/test/
-/node_modules/
+node_modules/
 
 # Compiled class file
 *.class
