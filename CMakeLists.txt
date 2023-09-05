@@ -14,14 +14,14 @@ add_executable(Algorithm main.cpp
 #添加bits/stdc++的路径
 include_directories(BEFORE dependencies/include)
 
-
 #SingleFileExecutionPlugin
 add_executable(test_1 test/test_1.cpp)
 set_target_properties(test_1 PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(test test/test.cpp)
 set_target_properties(test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 
-add_executable(SwordOffer_58_Reverse-Left-Words leetcode/SwordOffer_58_Reverse-Left-Words.cpp)
-set_target_properties(SwordOffer_58_Reverse-Left-Words PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
-add_executable(Leetcode_102_binary-tree-level-order-traversal leetcode/editor/cn/Leetcode_102_binary-tree-level-order-traversal.cpp)
-set_target_properties(Leetcode_102_binary-tree-level-order-traversal PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_1_two-sum src/leetcode/editor/cn/Leetcode_1_two-sum.cpp)
+set_target_properties(Leetcode_1_two-sum PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+
+add_executable(Leetcode_2_add-two-numbers src/leetcode/editor/cn/Leetcode_2_add-two-numbers.cpp)
+set_target_properties(Leetcode_2_add-two-numbers PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
