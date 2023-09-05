@@ -1,5 +1,5 @@
 // import universal *.h
-#include "../../../dependencies/include/bits/stdc++.h"
+#include "../../../../dependencies/include/bits/stdc++.h"
 
 using namespace std;
 

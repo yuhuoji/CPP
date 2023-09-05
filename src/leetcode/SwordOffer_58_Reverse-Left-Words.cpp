@@ -16,8 +16,6 @@ private:
     }
 
 public:
-    Solution(/* args */) {}
-    ~Solution() {}
     /**
      * abcdefg
      * gfdecba
