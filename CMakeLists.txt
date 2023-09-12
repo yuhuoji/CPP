@@ -25,3 +25,7 @@ set_target_properties(Leetcode_1_two-sum PROPERTIES RUNTIME_OUTPUT_DIRECTORY "bu
 
 add_executable(Leetcode_2_add-two-numbers src/leetcode/editor/cn/Leetcode_2_add-two-numbers.cpp)
 set_target_properties(Leetcode_2_add-two-numbers PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_49_group-anagrams src/leetcode/editor/cn/Leetcode_49_group-anagrams.cpp)
+set_target_properties(Leetcode_49_group-anagrams PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_128_longest-consecutive-sequence src/leetcode/editor/cn/Leetcode_128_longest-consecutive-sequence.cpp)
+set_target_properties(Leetcode_128_longest-consecutive-sequence PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
