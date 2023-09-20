@@ -2,44 +2,76 @@
 
 using namespace std;
 
-  
-namespace solution198{
-    //leetcode submit region begin(Prohibit modification and deletion)
+namespace solution198 {
+// leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    //TODO @date 2023-09-17
-    int rob2(vector<int>& nums) {
-
+    // 空间压缩
+    int rob3(vector<int>& nums) {
+        int n = nums.size(); // n>=1
+        // i from 0 to n
+        // 初始条件
+        int p = 0;
+        int q = nums[0];
+        int money = q;
+        // p, q, money
+        // dp[i-2] dp[i-1] dp[i]
+        for (int i = 2; i <= n; ++i) { // fill dp[i]
+            money = max(q, p + nums[i - 1]);
+            // 转移
+            p = q;
+            q = money;
+        }
+        return money; // 返回值
     }
-    // 偷i: f(i) = nums[i] + max{偷i-1和i+1以外能得到的钱}
 
-    //递归
+    // 动态规划
+    // 前i-1个房子 dp[i] = max{dp[i-1], dp[i-2] + nums[i-1]}
+    int rob2(vector<int>& nums) {
+        int n = nums.size(); // n>=1
+        // i from 0 to n
+        vector<int> dp(n + 1, 0);
+        dp[0] = 0;
+        dp[1] = nums[0];
+        for (int i = 2; i <= n; ++i) {
+            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+        }
+        return dp[n];
+    }
+
+    // 递归
+    // 子问题 f(k) 偷前k间房子的最大金额
     int rob(vector<int>& nums) {
         int n = nums.size();
-        vector<int> isRobbed(n); //1 means robbed
-
-        return f(nums,isRobbed,0);
+        return f(nums, n);
     }
-    //偷i位置的
-//    int f(const vector<int>& nums,vector<int> isRobbed, int i){
-//        int money=INT_MIN;
-//        for (int j = 0; j < nums.size(); ++j) {
-//            if (isRobbed[j]==0){
-//                money =max(money, f(nums,isRobbed));
-//            }
-//        }
-//
-//        return money+nums[i];
-//    }
-};
-//leetcode submit region end(Prohibit modification and deletion)
 
-}
+    // 偷前k个房子的钱 f(k) = max{f(k-1), nums[k-1] + f(k-2)}，k from 0 to n-1
+    int f(const vector<int> nums, int k) {
+        if (k == 0) {
+            return 0;
+        }
+        if (k == 1) {
+            return nums[0];
+        }
+        if (k == 2) {
+            return max(nums[0], nums[1]);
+        }
+
+        return max(f(nums, k - 1), (nums[k - 1] + f(nums, k - 2)));
+    }
+};
+// leetcode submit region end(Prohibit modification and deletion)
+
+} // namespace solution198
 
 using namespace solution198;
 int main() {
-    std::cout<< "Leetcode " <<  "198" <<std::endl;
+    std::cout << "Leetcode "
+              << "198" << std::endl;
     Solution solution = Solution();
-
+    //    [1,2,3,1]
+    vector<int> nums = {1, 2, 3, 1};
+    cout << solution.rob(nums) << endl;
     return 0;
 }
