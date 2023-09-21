@@ -76,3 +76,7 @@ add_executable(Leetcode_234_palindrome-linked-list  "src/leetcode/editor/cn/Leet
 set_target_properties(Leetcode_234_palindrome-linked-list  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_213_house-robber-ii  "src/leetcode/editor/cn/Leetcode_213_house-robber-ii .cpp")
 set_target_properties(Leetcode_213_house-robber-ii  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_337_house-robber-iii  "src/leetcode/editor/cn/Leetcode_337_house-robber-iii .cpp")
+set_target_properties(Leetcode_337_house-robber-iii  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_322_coin-change  "src/leetcode/editor/cn/Leetcode_322_coin-change .cpp")
+set_target_properties(Leetcode_322_coin-change  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
