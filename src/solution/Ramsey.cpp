@@ -1,3 +1,12 @@
-//
-// Created by Legion on 2023/9/20.
-//
+#include <bits/stdc++.h>
+
+using namespace std;
+class Solution{
+
+};
+int main() {
+    Solution solution;
+
+    cout<< "111" <<endl;
+    return 0;
+}
