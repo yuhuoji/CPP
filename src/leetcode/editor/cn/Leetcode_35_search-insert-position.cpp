@@ -11,19 +11,18 @@ public:
         int n = nums.size();
         int l = 0;
         int r = n - 1;
-//        int ans = n;
         while (l <= r) {
             int m = (r - l) / 2 + l;
             if (target <= nums[m]) {
-//                ans = m;
                 r = m - 1;
-            } else{ // target > nums[m]
+            } else {
                 l = m + 1;
             }
         }
+        //根据if的判断条件，left左边的值一直保持小于target，right右边的值一直保持大于等于target
         // ...(左侧<target) r l （右侧>=target）...
 
-        return l;
+        return r;
     }
 };
 // leetcode submit region end(Prohibit modification and deletion)
@@ -34,7 +33,7 @@ using namespace solution35;
 int main() {
     std::cout << "Leetcode " << 35 << std::endl;
     Solution solution = Solution();
-    vector<int> nums = {1, 3, 5};
+    vector<int> nums = {1, 3, 3, 5};
     int target = 3; // 2 7
     cout << solution.searchInsert(nums, target) << endl;
     return 0;

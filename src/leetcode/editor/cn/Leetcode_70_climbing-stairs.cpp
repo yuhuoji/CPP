@@ -7,26 +7,26 @@ namespace solution70 {
 class Solution {
 public:
     int climbStairs(int n) {
-        if (n<=2) {
+        if (n <= 2) {
             return n;
         }
-        int a =1,b=2,sum;
+        int a = 1, b = 2, sum;
         for (int i = 3; i <= n; ++i) {
-            sum = a+b;
-            a=b;
-            b=sum;
+            sum = a + b;
+            a = b;
+            b = sum;
         }
         return sum;
     }
     int climbStairs2(int n) {
-        if (n<=2) {
+        if (n <= 2) {
             return n;
         }
-        int dp[n+1] ;
+        int dp[n + 1];
         dp[1] = 1;
         dp[2] = 2;
         for (int i = 3; i <= n; ++i) {
-            dp[i] = dp[i-1]+dp[i-2];
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
         return dp[n];
     }
@@ -51,8 +51,9 @@ int main() {
     std::cout << "Leetcode "
               << "70" << std::endl;
     Solution solution = Solution();
-        int n = 5;
-        cout << solution.climbStairs1(n) << endl;
-        cout << solution.climbStairs1(n) << endl;
+    int n = 6;
+    cout << solution.climbStairs1(n) << endl;
+    cout << solution.climbStairs2(n) << endl;
+    cout << solution.climbStairs(n) << endl;
     return 0;
 }

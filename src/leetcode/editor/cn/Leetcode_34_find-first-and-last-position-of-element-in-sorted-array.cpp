@@ -14,13 +14,13 @@ public:
         int r = n - 1;
         while (l <= r) {
             int m = ((r - l) >> 1) + l;
-            if (nums[m] < target) {
+            if (target > nums[m]) {
                 l = m + 1;
             } else {
                 r = m - 1;
             }
         }
-        return l;
+        return l; // 返回第一个大于等于target的位置
     }
 
     // 二分

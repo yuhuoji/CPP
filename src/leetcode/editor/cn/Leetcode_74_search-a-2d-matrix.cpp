@@ -19,6 +19,7 @@ public:
         }
         return false;
     }
+
     // 一次二分O(logm*n)
     bool searchMatrix2(vector<vector<int>>& matrix, int target) {
         int row = matrix.size();
@@ -30,17 +31,29 @@ public:
             int r = median / column;
             int c = median % column;
             //(r,c)
-            if (matrix[r][c] == target) {
-                return true;
-            } else if (matrix[r][c] > target) {
+            //            if (matrix[r][c] == target) {
+            //                return true;
+            //            } else if (matrix[r][c] > target) {
+            //                right = median - 1;
+            //            } else {
+            //                left = median + 1;
+            //            }
+            if (target <= matrix[r][c]) { // 找到第一个>= target的位置, 最后比较是否等于target
                 right = median - 1;
             } else {
                 left = median + 1;
             }
         }
-
-        return false;
+        int median = (right - left) / 2 + left;
+        int r = median / column;
+        int c = median % column;
+        if (matrix[r][c] == target) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
     // 贪心 O(m*n)
     bool searchMatrix3(vector<vector<int>>& matrix, int target) {
         int row = matrix.size();
@@ -53,15 +66,15 @@ public:
                 r++;
             } else if (matrix[r][c] > target) {
                 c--;
-            } else if (matrix[r][c] == target){
+            } else if (matrix[r][c] == target) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
         return false;
     }
-    //两次二分 O(logm * logn)
+    // 两次二分 O(logm * logn)
     bool searchMatrix(vector<vector<int>> matrix, int target) {
         // 二分查找行
         auto row = upper_bound(matrix.begin(), matrix.end(), target, [](const int b, const vector<int>& a) {

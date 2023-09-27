@@ -7,6 +7,28 @@
 using namespace std;
 
 class Solution {
+
+public:
+    int findMostFrequentNumber(const vector<int>& nums) {
+        unordered_map<int, int> m;
+        int n = nums.size();
+        int maxCount = 0;
+        int maxNumber = -1;
+        for (int num : nums) {
+            if (m.find(num) == m.end()) {
+                m[num] = 1;
+            } else {
+                m[num]++;
+            }
+
+            if (m[num] > maxCount) {
+                maxCount = m[num];
+                maxNumber = num;
+            }
+        }
+        return maxNumber;
+    }
+
 public:
     void decompose(int N, string current) {
         if (N == 0) {
@@ -62,8 +84,7 @@ public:
     }
 
 public:
-    void
-    generateCombinations(int n) {
+    void generateCombinations(int n) {
         if (n == 0) {
             // 输出当前组合
             for (int num : currentCombination) {
@@ -116,14 +137,19 @@ public:
 
 int main() {
     Solution solution;
-    //    int n = 4;
+        int n = 4;
     //    solution.ball(n);
-    //    solution.generateCombinations(n);
+        solution.generateCombinations(n);
 
     //    vector<int> nums = {1, 1, 2, 3, 4, 3};
     //    bool ans = solution.singlePeak(nums);
     //    cout << boolalpha << ans << endl;
 
-    solution.decompose(4, "");
+    //    solution.decompose(4, "");
+
+//    vector<int> nums = {1, 2, 2, 3, 3, 3, 4, 4, 4, 4};
+//    int ans = solution.findMostFrequentNumber(nums);
+//    cout << ans << endl;
+
     return 0;
 }
