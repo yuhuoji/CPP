@@ -14,6 +14,7 @@ namespace solution141 {
  */
 class Solution {
 public:
+    // 双指针
     // 快慢指针
     bool hasCycle(ListNode* head) {
         ListNode* slow = head;
@@ -24,7 +25,7 @@ public:
             }
             slow = slow->next;
             fast = fast->next->next;
-            if (fast==slow){
+            if (fast == slow) {
                 return true;
             }
         }

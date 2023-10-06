@@ -19,7 +19,9 @@ public:
     // s = nb, 只需要 slow 再走 a 步
     // 让 fast 从头和 slow 一起走 a 步
 
+    // 双指针
     // 快慢指针
+    //TODO @date 2023-10-06 起点？
     ListNode* detectCycle(ListNode* head) {
         ListNode* slow = head;
         ListNode* fast = head;
