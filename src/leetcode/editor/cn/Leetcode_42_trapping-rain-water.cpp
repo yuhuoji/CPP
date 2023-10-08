@@ -6,7 +6,31 @@ namespace solution42 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
+    //TODO @date 2023-10-08
+    // 单调栈，横着计算
+    // 找下一个>=的数
     int trap(vector<int>& height) {
+        int n = height.size();
+        int ans = 0;
+        stack<int> stk;
+        for (int i = 0; i < n; ++i) {
+            int h = height[i];
+            while (!stk.empty() && h >= height[stk.top()]) {
+                int bottom_h = height[stk.top()];
+                stk.pop();
+                if (stk.empty()) {
+                    break;
+                }
+                int left = stk.top();
+                int diff_h =min(height[left],h)-bottom_h;
+                ans+= diff_h*(i-left-1);
+            }
+            stk.push(i);
+        }
+        return ans;
+    }
+
+    int trap2(vector<int>& height) {
         int n = height.size();
         if (n <= 2) {
             return 0;
@@ -31,6 +55,7 @@ public:
     }
 
     // 双指针+单调性分析
+    // 竖着计算
     int trap1(vector<int>& height) {
         int n = height.size();
         if (n <= 2) {

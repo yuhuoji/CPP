@@ -126,3 +126,5 @@ add_executable(Leetcode_100085_minProcessingTime src/leetcode/contest/Leetcode_1
 set_target_properties(Leetcode_100085_minProcessingTime PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_8028_minOperations src/leetcode/contest/Leetcode_8028_minOperations.cpp)
 set_target_properties(Leetcode_8028_minOperations PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_739_daily-temperatures src/leetcode/editor/cn/Leetcode_739_daily-temperatures.cpp)
+set_target_properties(Leetcode_739_daily-temperatures PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
