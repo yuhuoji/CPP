@@ -8,6 +8,7 @@ using namespace std;
 
 class Solution {
 public:
+    // TODO @date 2023-9-24
     // 贪心？
     // 单调递减
     long long maximumSumOfHeights(vector<int>& maxHeights) {
@@ -58,7 +59,7 @@ public:
 
 int main() {
     Solution solution;
-    vector<int> maxHeights = {6,5,3,9,2,7};
+    vector<int> maxHeights = {6, 5, 3, 9, 2, 7};
     cout << solution.maximumSumOfHeights(maxHeights) << endl;
 
     return 0;
