@@ -8,7 +8,14 @@ using namespace std;
 
 class Solution {
 public:
+    // sum - 2n_2
+
     int differenceOfSums(int n, int m) {
+        int k = n / m;
+        return n * (n + 1) / 2 - k * (k + 1) * m;
+    }
+
+    int differenceOfSums1(int n, int m) {
         int sum = 0, num1 = 0, num2 = 0;
         for (int i = 1; i <= n; ++i) {
             sum += i;

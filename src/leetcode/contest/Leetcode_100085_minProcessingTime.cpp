@@ -16,8 +16,7 @@ public:
         int n = tasks.size();
         int ans = 0;
         for (int i = 0; i < m; ++i) {
-            int processTime = processorTime[i];
-            ans = max(ans, processorTime[i] + tasks[n-4 * i -1]);
+            ans = max(ans, processorTime[i] + tasks[n - 4 * i - 1]);
         }
         return ans;
     }
@@ -26,8 +25,8 @@ public:
 int main() {
     Solution solution;
     //    processorTime = [8,10], tasks = [2,2,3,1,8,7,4,5]
-    vector<int> processorTime = {8,10};
-    vector<int> tasks = {2,2,3,1,8,7,4,5};
+    vector<int> processorTime = {8, 10};
+    vector<int> tasks = {2, 2, 3, 1, 8, 7, 4, 5};
     cout << solution.minProcessingTime(processorTime, tasks) << endl;
 
     return 0;
