@@ -142,3 +142,7 @@ add_executable(Leetcode_875_koko-eating-bananas src/leetcode/editor/cn/Leetcode_
 set_target_properties(Leetcode_875_koko-eating-bananas PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_410_split-array-largest-sum src/leetcode/editor/cn/Leetcode_410_split-array-largest-sum.cpp)
 set_target_properties(Leetcode_410_split-array-largest-sum PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_719_find-k-th-smallest-pair-distance src/leetcode/editor/cn/Leetcode_719_find-k-th-smallest-pair-distance.cpp)
+set_target_properties(Leetcode_719_find-k-th-smallest-pair-distance PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_2141_maximum-running-time-of-n-computers src/leetcode/editor/cn/Leetcode_2141_maximum-running-time-of-n-computers.cpp)
+set_target_properties(Leetcode_2141_maximum-running-time-of-n-computers PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
