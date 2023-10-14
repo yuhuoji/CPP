@@ -6,8 +6,37 @@ namespace solution2896 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     // REVIEW @date 2023-10-14
+    //  dp
 public:
+    //共有-1...m-1个状态, 右移一位
     int minOperations(string s1, string s2, int x) {
+        if (count(s1.begin(), s1.end(), '1') % 2 != count(s2.begin(), s2.end(), '1') % 2) {
+            return -1;
+        }
+        int n = s1.size();
+        vector<int> p; // 不同位置的下标
+        for (int i = 0; i < n; ++i) {
+            if (s1[i] != s2[i]) {
+                p.push_back(i);
+            }
+        }
+        if (p.size() % 2) {
+            return -1;
+        } else if (p.size() == 0) {
+            return 0;
+        }
+        //滚动数组
+        int f0, f1 = x; //-1, 0
+        for (int i = 1; i < p.size(); ++i) {
+            int new_f = min(f1 + x, f0 + (p[i] - p[i - 1]) * 2);
+            f0 = f1;
+            f1 = new_f;
+        }
+        return f1 / 2;
+    }
+
+    // 时间O(N)
+    int minOperations2(string s1, string s2, int x) {
         if (count(s1.begin(), s1.end(), '1') % 2 != count(s2.begin(), s2.end(), '1') % 2) {
             return -1;
         }
@@ -26,30 +55,25 @@ public:
             return -1;
         }
 
-        //TODO @date 2023-10-14
-        // 当前i位置
-        // op1 dfs(i-1)+x/2
-        // op2 dfs(i-2)+diff[i]-diff[i-1]
-        // 将花费先乘2最后除2，避免x/2
+        // TODO @date 2023-10-14
+        //  当前i位置
+        //  op1 dfs(i-1)+x/2
+        //  op2 dfs(i-2)+diff[i]-diff[i-1]
+        //  将花费先乘2最后除2，避免x/2
         function<int(int)> dfs = [&x, &diff](int i) {
             function<int(int)> solve = [&](int i) -> int {
                 if (i == -1) {
                     return 0;
                 }
-                int ans1 = solve(i - 1) + x;
-                int ans2;
                 if (i == 0) { // 特判i=0
-                    ans2 = INT_MAX / 2;
-                } else {
-                    ans2 = solve(i - 2) + (diff[i] - diff[i - 1]) * 2;
+                    return x;
                 }
-                return min(ans1, ans2);
+                return min(solve(i - 1) + x, solve(i - 2) + (diff[i] - diff[i - 1]) * 2);
             };
-
             return solve(i);
         };
 
-        return dfs(m - 1) / 2;
+        return dfs(m - 1) / 2; //-1...m-1个状态
     }
 
     // 记忆化搜索 O(n^2)
@@ -93,7 +117,6 @@ public:
         // 从n-1位置，免费次数，前一个位置不反转
         return dfs(n - 1, 0, false);
     }
-
 };
 // leetcode submit region end(Prohibit modification and deletion)
 
