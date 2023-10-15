@@ -2,35 +2,28 @@
 
 using namespace std;
 
-namespace solution136 {
+namespace solution137 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    //位运算，出现两次的位置对2取余为0，出现一次的为1
-    int singleNumber(vector<int>& nums) {
+    //TODO @date 2023-10-15 数字电路???
+
+    // 位运算，每一位都是所有数的%3
+    int singleNumber2(vector<int>& nums) {
         int ans = 0;
         for (int i = 0; i < 32; ++i) { // 0...31位
             int total = 0;
             for (auto num : nums) {
                 total += ((num >> i) & 1); // 取第i位二进制数
             }
-            if (total % 2) { // 为1
+            if (total % 3) { // 为1
                 ans |= (1 << i);
             }
         }
         return ans;
     }
-    // 位运算
-    // a^a = 0
-    // a^b = 1
-    int singleNumber2(vector<int>& nums) {
-        int ans = 0;
-        for (auto num : nums) {
-            ans ^= num;
-        }
-        return ans;
-    }
-    //hash
+
+    // hash
     int singleNumber1(vector<int>& nums) {
         unordered_map<int, int> mp;
         for (auto num : nums) {
@@ -46,12 +39,12 @@ public:
 };
 // leetcode submit region end(Prohibit modification and deletion)
 
-} // namespace solution136
+} // namespace solution137
 
-using namespace solution136;
+using namespace solution137;
 int main() {
     std::cout << "Leetcode "
-              << "136" << std::endl;
+              << "137" << std::endl;
     Solution solution;
 
     return 0;

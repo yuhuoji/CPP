@@ -7,7 +7,7 @@ namespace solution198 {
 class Solution {
 public:
     // 空间压缩
-    int rob3(vector<int>& nums) {
+    int rob(vector<int>& nums) {
         int n = nums.size(); // n>=1
         // i from 0 to n
         // 初始条件
@@ -22,11 +22,11 @@ public:
             p = q;
             q = money;
         }
-        return money; // 返回值
+        return q; // 返回值
     }
 
     // 动态规划
-    // 前i-1个房子 dp[i] = max{dp[i-1], dp[i-2] + nums[i-1]}
+    // 前i个房子 dp[i] = max{dp[i-1], dp[i-2] + nums[i-1]}
     int rob2(vector<int>& nums) {
         int n = nums.size(); // n>=1
         // i from 0 to n
@@ -41,7 +41,7 @@ public:
 
     // 递归
     // 子问题 f(k) 偷前k间房子的最大金额
-    int rob(vector<int>& nums) {
+    int rob1(vector<int>& nums) {
         int n = nums.size();
         return f(nums, n);
     }

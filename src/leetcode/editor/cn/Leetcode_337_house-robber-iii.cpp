@@ -16,10 +16,16 @@ namespace solution337 {
  * };
  */
 class Solution {
-    // 二叉树的递归&动态规划
+    // TODO @date 2023-10-15
+
+    // 树型dp
+    // 子问题rob(root,bool) 是否（可能）能偷root
+    // ans = max{rob(root, true), rob(root, false)}
+    // rob(root, true) = val + max{偷， 不偷}
+    // rob(root, false) = 左树能偷 + 右树能偷
 public:
     // 动态规划
-    int rob(TreeNode* root) {
+    int rob3(TreeNode* root) {
         auto ans = dfs3(root);
         return max(ans[0], ans[1]);
     }
@@ -66,11 +72,9 @@ public:
             int case1 = root->val + robRecursive(root->left, false) + robRecursive(root->right, false);
             int case2 = robRecursive(root->left, true) + robRecursive(root->right, true);
             return max(case1, case2);
-        }
-        if (!select) { // 不选root
+        } else { // 不选root
             return robRecursive(root->left, true) + robRecursive(root->right, true);
         }
-        return 0;
     }
 };
 // leetcode submit region end(Prohibit modification and deletion)
@@ -85,9 +89,10 @@ int main() {
     string s1 = "[3,2,3,null,3,null,1]";
     TreeNode* root1 = stringToTreeNode(s1);
     cout << solution.rob(root1) << endl;
+
     string s2 = "[3,4,5,1,3,null,1]";
     TreeNode* root2 = stringToTreeNode(s2);
-    cout << solution.rob(nullptr) << endl;
+    //    cout << solution.rob(root2) << endl;
 
     return 0;
 }
