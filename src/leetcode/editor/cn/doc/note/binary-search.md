@@ -2,34 +2,35 @@
 ```c++
 class BinarySearch {
 public:
-    // 两两成对出现
-    // 第一个>=target的位置
-    // 最后一个<target的位置
-    // 第一个>target的位置
-    // 最后一个<=target的位置
+    // 二分，找到第一个 >= target的位置
+    // 闭区间写法[l,r]
+    // *第一个>=target的位置
+    // 四种可以相互转换(整数)
+    // 最后一个<target的位置 binarySearch(>=target) - 1
+    // 第一个>target的位置 binarySearch(>=target+1)
+    // 最后一个<=target的位置, 转换成binarySearch(>target) - 1, binarySearch(>=target+1) - 1
     int binarySearch(vector<int> nums, int target) {
         int n = nums.size();
         int l = 0;
         int r = n - 1;
-        while (l <= r) { // 最后一次循环 l=r
+        while (l <= r) { //最后一次循环
             int m = ((r - l) >> 1) + l;
-            if (nums[m] <= target) { // 尝试修改if中的符号
-                l = m + 1;
+            if (target > nums[m]) {
+                l = m + 1; //[l-1]一定小于target
             } else {
-                r = m - 1;
+                r = m - 1; //[r+1]一定大于等于target
             }
         }
-        // 循环结束 r+1 = l
-        //...r, l ...
-        //  <=, >
-        //  < , >=
-        return l; // 尝试修改返回值l or r
+        // 循环结束r+1=l
+        // r表示最后一个小于target的位置，l表示第一个大于等于target的位置
+        return l; // 返回第一个大于等于target的位置
     }
 };
 ```
 
-有序数组查找target
+分为闭区间，半开半闭，开区间写法。开闭区间和l和r移动相关
 
+经典：有序数组查找target
 
 
 二分答案法
@@ -42,12 +43,16 @@ public:
 
 4. 在最终答案可能的范围上不断二分搜索，每次用f函数判断，直到二分结束，找到最合适的答案
 
-   
 
 利用*单调性*每次排除一半的答案，缩小查找范围。找到*单调性*很重要。
 
 f函数，用条件确定时用中间值m进行判断，排除一半的答案。
 
+题目
+34
 35
 875
 410
+162
+153
+33

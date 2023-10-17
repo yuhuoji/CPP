@@ -2,55 +2,47 @@
 using namespace std;
 class BinarySearch {
 public:
+    // 二分，找到第一个 >= target的位置
+    // 闭区间写法[l,r]
+    // *第一个>=target的位置
+    // 四种可以相互转换(整数)
+    // 最后一个<target的位置 binarySearch(>=target) - 1
+    // 第一个>target的位置 binarySearch(>=target+1)
+    // 最后一个<=target的位置, 转换成binarySearch(>target) - 1, binarySearch(>=target+1) - 1
     int binarySearch(vector<int> nums, int target) {
         int n = nums.size();
         int l = 0;
         int r = n - 1;
-        int ans = -1;
-        while (l <= r) { // 最后一次循环 l=r, 搜索的范围[l...r]
+        while (l <= r) { // 最后一次循环
             int m = ((r - l) >> 1) + l;
-            if (nums[m] >= target) {
-                ans = m;
-                r = m - 1;
+            if (target > nums[m]) {
+                l = m + 1; //[l-1]一定小于target
             } else {
-                l = m + 1;
+                r = m - 1; //[r+1]一定大于等于target
             }
         }
-        return ans;
-    }
-
-    // 两两成对出现
-    // 第一个>=target的位置
-    // 最后一个<target的位置
-    // 第一个>target的位置
-    // 最后一个<=target的位置
-    int binarySearch1(vector<int> nums, int target) {
-        int n = nums.size();
-        int l = 0;
-        int r = n - 1;
-        while (l <= r) { // 最后一次循环 l=r, 搜索的范围[l...r]
-            int m = ((r - l) >> 1) + l;
-            // target <= nums[m]表示l左侧严格小于target，r右侧大于等于target， < l , r >=
-            // target < nums[m]表示l左侧小于等于target，r右侧严格大于target， <= l , r >
-            if (target <= nums[m]) { // 尝试修改if中的符号<= < > >=
-                r = m - 1;
-            } else { // m [l...r]
-                l = m + 1;
-            }
-        }
-        // 循环结束 r+1 = l
-        //... l , r ...
-        //    <=, >
-        // or  < , >=
-        return r; // 尝试修改返回值l or r
+        // 循环结束r+1=l
+        // r表示最后一个小于target的位置，l表示第一个大于等于target的位置
+        return l; // 返回第一个大于等于target的位置
     }
 };
 int main() {
     BinarySearch solution = BinarySearch();
-    vector<int> nums = {1, 2, 3, 3, 3, 4, 6, 7};
-    int target = 9;
+    vector<int> nums = {5, 7, 7, 8, 8, 10};
+    int target = 7;
+
+    // 第一个>=target
     int ans = solution.binarySearch(nums, target);
-    cout << "position : " << ans << ", num : " << nums[ans] << endl;
+    cout << "position : " << solution.binarySearch(nums, target) << ", ans : " << nums[solution.binarySearch(nums, target)] << endl;
+
+    // 第一个>target
+    cout << "position : " << solution.binarySearch(nums, target + 1) << ", ans : " << nums[solution.binarySearch(nums, target + 1)] << endl;
+
+    // 最后一个<=target
+    cout << "position : " << solution.binarySearch(nums, target + 1) - 1 << ", ans : " << nums[solution.binarySearch(nums, target + 1) - 1] << endl;
+
+    // 最后一个<target
+    cout << "position : " << solution.binarySearch(nums, target) - 1 << ", ans : " << nums[solution.binarySearch(nums, target) - 1] << endl;
 
     return 0;
 }
