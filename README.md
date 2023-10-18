@@ -8,4 +8,4 @@
 
 ---
 
-[note](src\leetcode\editor\cn\doc\note)
+[note](src/leetcode/editor/cn/doc/note)
