@@ -7,42 +7,41 @@ namespace solution1201 {
 class Solution {
 public:
     // 二分查找
+    // REVIEW @date 2023-10-18
     // TODO @date 2023-10-17
+    // 用整数运算来避免浮点数精度问题
     int nthUglyNumber(int n, int a, int b, int c) {
-        int l = 1;
-        int r = min(min(a, b), c) ^ n;
-        int ans = 1;
+        long long l = min(min(a, b), c);
+        long long r = min(min(a, b), c) * n;
 
         // 求[1,num]的丑数个数，比较是否等于n
-        function<int(int)> check = [&a, &b, &c](int num) -> int {
+        function<long long(long long)> check = [=](long long num) {
             // 容斥原理
-            long long count_ugly = num / a + num / b + num / c - num / std::lcm(a, b) - num / std::lcm(b, c) - std::lcm(a, c) + std::lcm(std::lcm(a, b), c);
-            return count_ugly;
+            long long lcm_ab = std::lcm(a, b);
+            long long lcm_ac = std::lcm(a, c);
+            long long lcm_bc = std::lcm(b, c);
+            long long lcm_abc = std::lcm(std::lcm(a, b), c);
+            return num / a + num / b + num / c - num / lcm_ab - num / lcm_ac - num / lcm_bc + num / lcm_abc;
         };
 
         while (l <= r) {
-            int m = ((r - l) >> 1) + l;
-            int count = check(m);
-            if (count == n) {
-                ans = m;
-                break;
-            } else if (count > n) {
+            long long m = ((r - l) >> 1) + l;
+            long long count = check(m);
+            if (count >= n) { // m说不定够
                 r = m - 1;
-            } else {
+            } else { // m肯定太小
                 l = m + 1;
             }
         }
         // ans正好有n个丑数
         // 找到最左端点
 
-        cout << "ans:" << ans << endl;
-
-        return ans - min(min(ans % a, ans % b), ans % c);
+        return l; // 有>=n个因数的第一个数
     }
 
     // 最大公约数
-    //  a = b * q + r
-    //  gcd(a,b) = gcd(b,r)
+    // a = b * q + r
+    // gcd(a,b) = gcd(b,r)
     int gcd(int a, int b) {
         while (b != 0) {
             int r = a % b;
@@ -61,7 +60,7 @@ public:
 
     // 最小公倍数
     // lcm(a,b)
-    long lcm(int a, int b) {
+    long long lcm(int a, int b) {
         return a / gcd(a, b) * b;
     }
 };
@@ -81,9 +80,14 @@ int main() {
     //    cout << std::gcd(a, b) << endl;
     //    cout << solution.gcd(a, b) << endl;
 
-    //    cout << std::lcm(2, 5) << endl;
+    int n = 1000000000, a = 2, b = 217983653, c = 336916467; // 1999999984
+                                                             //    int num = 16;
+    //    cout << std::lcm(a, b) << endl;
+    //    cout << std::lcm(a, c) << endl;
+    //    cout << std::lcm(b, c) << endl;
 
-    int n = 5, a = 2, b = 11, c = 13;
+    //    long long count_ugly = num / a + num / b + num / c - num / std::lcm(a, b) - num / std::lcm(b, c) - std::lcm(a, c) + std::lcm(std::lcm(a, b), c);
+    //    cout << count_ugly << endl;
 
     cout << solution.nthUglyNumber(n, a, b, c) << endl;
 
