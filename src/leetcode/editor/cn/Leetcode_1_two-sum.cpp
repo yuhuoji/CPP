@@ -6,6 +6,20 @@ namespace solution1 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
+    vector<int> twoSum(vector<int>& nums, const int target) {
+        int n = nums.size();
+        unordered_map<int, int> mp;
+        for (int i = 0; i < n; ++i) {
+            auto it = mp.find(target - nums[i]);
+            if (it != mp.end()) { // 找到了
+                return {it->second, i};
+            }
+            mp[nums[i]] = i;
+        }
+        return {};
+    }
+
+    // O(N^2)
     vector<int> twoSum1(vector<int>& nums, int target) {
         for (int i = 0; i < nums.size(); ++i) {
             for (int j = i + 1; j < nums.size(); ++j) {
@@ -16,7 +30,8 @@ public:
         }
         return {};
     }
-    vector<int> twoSum(vector<int>& nums, const int target) {
+
+    vector<int> twoSum2(vector<int>& nums, const int target) {
         unordered_map<int, int> hashtable;
         for (int i = 0; i < nums.size(); ++i) {
             auto it = hashtable.find(target - nums[i]);
@@ -39,11 +54,11 @@ int main() {
     vector<int> nums = {3, 2, 4};
     int target = 6;
     vector<int> res = solution.twoSum(nums, target);
-    for (int & re : res) {
+    for (int& re : res) {
         cout << re << endl;
     }
-//    for (auto it = res.begin(); it != res.end(); ++it) {
-//        cout << *it << endl;
-//    }
+    //    for (auto it = res.begin(); it != res.end(); ++it) {
+    //        cout << *it << endl;
+    //    }
     return 0;
 }

@@ -6,7 +6,44 @@ namespace solution15 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
+    // TODO @date 2023-10-19 允许重复呢, 三数相加等于0
+
+    // 数不能重复
     vector<vector<int>> threeSum(vector<int>& nums) {
+        int n = (int) nums.size();
+        if (n <= 2) {
+            return {};
+        }
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
+        for (int first = 0; first < n; ++first) {              // 枚举第一个数
+            if (first > 0 && nums[first] == nums[first - 1]) { // 去重
+                continue;
+            }
+            int third = n - 1;
+            int target = -nums[first];
+            for (int second = first + 1; second < n; ++second) {
+                if (second > first + 1 && nums[second] == nums[second - 1]) { // 去重
+                    continue;
+                }
+                while (second < third && nums[second] + nums[third] > target) { // 大了
+                    third--;
+                }
+
+                if (second == third) { // 后续j > k，无解
+                    break;
+                }
+
+                if (nums[second] + nums[third] == target) {
+                    ans.push_back({nums[first], nums[second], nums[third]}); //使用emplace_back无法推断类型
+                }
+            }
+        }
+
+        return ans;
+    }
+
+    vector<vector<int>> threeSum3(vector<int>& nums) {
         int n = (int) nums.size();
         sort(nums.begin(), nums.end());
         vector<vector<int>> ans;
@@ -74,15 +111,15 @@ public:
         sort(nums.begin(), nums.end());
         vector<vector<int>> ans;
         for (int i = 0; i < n - 2; ++i) {
-            if (i > 0 && nums[i] == nums[i - 1]) {
+            if (i > 0 && nums[i] == nums[i - 1]) { //去重
                 continue;
             }
             for (int j = i + 1; j < n - 1; ++j) {
-                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) { //去重
                     continue;
                 }
                 for (int k = j + 1; k < n; ++k) {
-                    if (k > j + 1 && nums[k] == nums[k - 1]) {
+                    if (k > j + 1 && nums[k] == nums[k - 1]) { //去重
                         continue;
                     }
                     if (nums[i] + nums[j] + nums[k] == 0) {
