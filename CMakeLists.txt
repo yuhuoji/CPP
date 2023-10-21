@@ -200,3 +200,5 @@ add_executable(Leetcode_560_subarray-sum-equals-k src/leetcode/editor/cn/Leetcod
 set_target_properties(Leetcode_560_subarray-sum-equals-k PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_239_sliding-window-maximum src/leetcode/editor/cn/Leetcode_239_sliding-window-maximum.cpp)
 set_target_properties(Leetcode_239_sliding-window-maximum PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_2316_count-unreachable-pairs-of-nodes-in-an-undirected-graph src/leetcode/editor/cn/Leetcode_2316_count-unreachable-pairs-of-nodes-in-an-undirected-graph.cpp)
+set_target_properties(Leetcode_2316_count-unreachable-pairs-of-nodes-in-an-undirected-graph PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
