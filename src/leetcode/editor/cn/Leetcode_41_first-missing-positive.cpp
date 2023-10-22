@@ -6,9 +6,11 @@ namespace solution41 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    // TODO @date 2023-10-06 难
+    //REVIEW @date 2023-10-22 难
+
+
     // 双指针
-    // nums[i]位置放i+1
+    // 置换，nums[i]位置放i+1
     int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
         int l = 0;

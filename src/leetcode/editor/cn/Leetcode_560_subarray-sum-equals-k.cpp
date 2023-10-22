@@ -6,26 +6,45 @@ namespace solution560 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    // 滑动窗口？
+    // 前缀和 + 哈希表
 
-    // REVIEW @date 2023-10-20
+    // REVIEW @date 2023-10-22
+
+    // 前缀和，0~i的前缀和sum, 看是否存在sum-k
+    // 哈希表优化，查找前缀和(sum-k)这个过程
+    int subarraySum(std::vector<int>& nums, int k) {
+        int n = nums.size();
+        unordered_map<int, int> mp; // 前缀和-次数
+        int cnt = 0;
+        mp[0] = 1;   // ！！！前缀和为0最开始就存在
+        int sum = 0; // 当前的前缀和
+        for (int i = 0; i < n; ++i) {
+            sum += nums[i];
+            if (mp.find(sum - k) != mp.end()) { // 存在
+                cnt+=mp[sum-k]; //统计所有前缀和为(sum-k)的
+            }
+            mp[sum]++; // 记录当前的前缀和
+        }
+        return cnt;
+    }
+
     // 前缀和pre, 看是否有(pre-k),
     // 则pre - (pre-k) = k
     // pre[i] - pre[j-1] = k
-    int subarraySum(vector<int>& nums, int k) {
+    int subarraySum2(vector<int>& nums, int k) {
         int n = nums.size();
         int ans = 0;
-        unordered_map<int, int> mp;
-        // sum [start...end] = pre[end] - pre[start-1] = k
-        // pre[i] 0~i的和
-        mp[0] = 1; // start = 0
-        int pre = 0;
+        unordered_map<int, int> mp; // 累加和-出现次数
+        // sum [start...end] = sum[end] - sum[start-1] = k
+        // sum[i] 0~i的和
+        mp[0] = 1;   // 0这个累加和有一次
+        int sum = 0; // 前缀和
         for (auto num : nums) {
-            pre += num;                         // 0~当前位置的和
-            if (mp.find(pre - k) != mp.end()) { // pre - (pre-k) = k
-                ans += mp[pre - k];
+            sum += num;                         // 0~当前位置的和
+            if (mp.find(sum - k) != mp.end()) { // sum - (sum-k) = k，有这个累加和
+                ans += mp[sum - k];
             }
-            mp[pre]++;
+            mp[sum]++;
         }
         return ans;
     }
@@ -56,5 +75,9 @@ int main() {
               << "560" << std::endl;
     Solution solution;
 
+    vector<int> nums = {1};
+    int k = 0;
+    int ans = solution.subarraySum(nums, k);
+    cout << ans << endl;
     return 0;
 }
