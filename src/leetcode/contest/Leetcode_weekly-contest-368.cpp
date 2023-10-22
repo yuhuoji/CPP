@@ -22,11 +22,7 @@ public:
             if (nums[i] > nums[i - 1]) {
                 lMax[i] = max(lMax[i - 1], nums[i - 1]);
             } else {
-                int j = i - 1;
-                while (j >= 0 && lMax[j] >= nums[i]) {
-                    --j;
-                }
-                lMax[i] = lMax[j];
+
             }
         }
 
@@ -34,11 +30,7 @@ public:
             if (nums[i]>nums[i+1]){
                 rMax[i] = max(rMax[i+1],nums[i+1]);
             } else{
-                int j = i + 1;
-                while (j <n && rMax[j] >= nums[i]) {
-                    ++j;
-                }
-                lMax[i] = lMax[j];
+
             }
         }
 
@@ -73,76 +65,6 @@ int main() {
     // nums = [6,5,4,3,4,5]
     //        vector<int> nums = {6,5,4,3,4,5};
     //    cout << solution.minimumSum(nums) << endl;
-    int n = nums.size();
-    vector<int> lMax(n, -1); // 初始化为-1，表示没有找到
-    vector<int> rMax(n, -1);
-
-    // 计算 lMax
-/*    stack<int> s;
-
-    for (int i = 0; i < n; i++) {
-        while (!s.empty() && nums[s.top()] < nums[i]) {
-            lMax[i] = max(lMax[i], nums[s.top()]);
-            s.pop();
-        }
-        if (!s.empty()) {
-            lMax[i] = max(lMax[i], lMax[s.top()]);
-        }
-        s.push(i);
-    }
-
-    // 清空栈
-    while (!s.empty()) {
-        s.pop();
-    }
-
-    // 计算 rMax
-    for (int i = n - 1; i >= 0; i--) {
-        while (!s.empty() && nums[s.top()] < nums[i]) {
-            rMax[i] = max(rMax[i], nums[s.top()]);
-            s.pop();
-        }
-        if (!s.empty()) {
-            rMax[i] = max(rMax[i], rMax[s.top()]);
-        }
-        s.push(i);
-    }*/
-
-    for (int i = 1; i < n; i++) {
-        if (nums[i] > nums[i - 1]) {
-            lMax[i] = max(lMax[i - 1], nums[i - 1]);
-        } else {
-            int j = i - 1;
-            while (j >= 0 && lMax[j] >= nums[i]) {
-                --j;
-            }
-            lMax[i] = lMax[j];
-        }
-    }
-
-    for (int i = n - 2; i >= 0; --i) {
-        if (nums[i]>nums[i+1]){
-            rMax[i] = max(rMax[i+1],nums[i+1]);
-        } else{
-            int j = i + 1;
-            while (j <n && rMax[j] >= nums[i]) {
-                ++j;
-            }
-            lMax[i] = lMax[j];
-        }
-    }
-
-    // lmax
-    for (int i = 0; i < n; i++) {
-        cout << lMax[i] << " ";
-    }
-
-    cout << endl;
-    // rmax
-    for (int i = 0; i < n; i++) {
-        cout << rMax[i] << " ";
-    }
-    cout << endl;
 
     return 0;
 }
