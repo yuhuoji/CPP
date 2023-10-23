@@ -9,10 +9,9 @@ using namespace std;
 class Solution {
 public:
     // 8026. 构造乘积矩阵
-    // 暴力？应该会爆
     // 总的product，每一次都取余12345
     // 最多俩0
-    // TODO @date 2023-10-15
+    //TODO @date 2023-10-23
     // 前后缀分解 238
     vector<vector<int>> constructProductMatrix(vector<vector<int>>& grid) {
         int n = grid.size();

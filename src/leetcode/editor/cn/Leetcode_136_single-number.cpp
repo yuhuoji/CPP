@@ -22,7 +22,8 @@ public:
     }
     // 位运算
     // a^a = 0
-    // a^b = 1
+    // 0^a = a
+    // a^b^b = a
     int singleNumber2(vector<int>& nums) {
         int ans = 0;
         for (auto num : nums) {

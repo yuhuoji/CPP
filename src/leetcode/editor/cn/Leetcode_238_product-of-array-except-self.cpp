@@ -20,6 +20,7 @@ public:
         }
         return ans;
     }
+
     vector<int> productExceptSelf1(vector<int>& nums) {
         int n = nums.size();
         vector<int> pre(n, 1), post(n, 1);
