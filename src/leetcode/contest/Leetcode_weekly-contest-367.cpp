@@ -11,7 +11,6 @@ public:
     // 8026. 构造乘积矩阵
     // 总的product，每一次都取余12345
     // 最多俩0
-    //TODO @date 2023-10-23
     // 前后缀分解 238
     vector<vector<int>> constructProductMatrix(vector<vector<int>>& grid) {
         int n = grid.size();
@@ -81,10 +80,9 @@ public:
         return {-1, -1};
     }
 
-    // 100084. 最短且字典序最小的美丽子字符串
-    // 字典序 <
+    // 2904. 最短且字典序最小的美丽子字符串
+    // 字典序 a < b
     // 滑动窗口
-    // TODO @date 2023-10-15
     string shortestBeautifulSubstring(string s, int k) {
         return "";
     }

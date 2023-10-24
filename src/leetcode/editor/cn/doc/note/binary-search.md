@@ -32,6 +32,7 @@ public:
 
 经典：有序数组查找target
 
+std::lower_bound
 
 二分答案法
 
