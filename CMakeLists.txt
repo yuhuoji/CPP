@@ -238,3 +238,7 @@ add_executable(Leetcode_76_minimum-window-substring src/leetcode/editor/cn/Leetc
 set_target_properties(Leetcode_76_minimum-window-substring PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_240_search-a-2d-matrix-ii src/leetcode/editor/cn/Leetcode_240_search-a-2d-matrix-ii.cpp)
 set_target_properties(Leetcode_240_search-a-2d-matrix-ii PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_139_word-break src/leetcode/editor/cn/Leetcode_139_word-break.cpp)
+set_target_properties(Leetcode_139_word-break PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_17_letter-combinations-of-a-phone-number src/leetcode/editor/cn/Leetcode_17_letter-combinations-of-a-phone-number.cpp)
+set_target_properties(Leetcode_17_letter-combinations-of-a-phone-number PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
