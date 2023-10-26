@@ -1,6 +1,8 @@
 #leetcode plugin
-src/leetcode/editor/cn/doc/content/
-src/leetcode/editor/cn/doc/solution/
+src/leetcode/editor/cn/doc/**/
+!src/leetcode/editor/cn/doc/*.*
+!src/leetcode/editor/cn/doc/note/
+
 cmake-build-debug/
 *.exe
 
