@@ -14,6 +14,9 @@ add_executable(Algorithm main.cpp
 #添加bits/stdc++的路径
 include_directories(BEFORE dependencies/include)
 
+#调整最大路径长度限制
+set(CMAKE_OBJECT_PATH_MAX 300)
+
 #SingleFileExecutionPlugin
 add_executable(test_1 test/test_1.cpp)
 set_target_properties(test_1 PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
@@ -252,3 +255,11 @@ add_executable(Leetcode_2698_find-the-punishment-number-of-an-integer src/leetco
 set_target_properties(Leetcode_2698_find-the-punishment-number-of-an-integer PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_77_combinations src/leetcode/editor/cn/Leetcode_77_combinations.cpp)
 set_target_properties(Leetcode_77_combinations PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(inout src/io/inout.cpp)
+set_target_properties(inout PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_1465_maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts src/leetcode/editor/cn/Leetcode_1465_maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts.cpp)
+set_target_properties(Leetcode_1465_maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_46_permutations src/leetcode/editor/cn/Leetcode_46_permutations.cpp)
+set_target_properties(Leetcode_46_permutations PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_216_combination-sum-iii src/leetcode/editor/cn/Leetcode_216_combination-sum-iii.cpp)
+set_target_properties(Leetcode_216_combination-sum-iii PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
