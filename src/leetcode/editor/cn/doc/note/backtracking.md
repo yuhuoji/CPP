@@ -36,4 +36,6 @@
 N皇后问题
 
 
+
+39 
 https://leetcode.cn/problems/permutations/solutions/9914/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/?envType=study-plan-v2&envId=top-100-liked

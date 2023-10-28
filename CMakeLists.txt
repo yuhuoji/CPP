@@ -263,3 +263,5 @@ add_executable(Leetcode_46_permutations src/leetcode/editor/cn/Leetcode_46_permu
 set_target_properties(Leetcode_46_permutations PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_216_combination-sum-iii src/leetcode/editor/cn/Leetcode_216_combination-sum-iii.cpp)
 set_target_properties(Leetcode_216_combination-sum-iii PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(Leetcode_2558_take-gifts-from-the-richest-pile src/leetcode/editor/cn/Leetcode_2558_take-gifts-from-the-richest-pile.cpp)
+set_target_properties(Leetcode_2558_take-gifts-from-the-richest-pile PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
