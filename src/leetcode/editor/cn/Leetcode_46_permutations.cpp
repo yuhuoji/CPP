@@ -6,7 +6,40 @@ namespace solution46 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
+    // 时间复杂度 O(n*n!)
+    // 叶节点个数*路径长度
+    // 复制 O(n)
+    // 空间复杂度 O(n)
+
+    // 集合记录
+    // REVIEW @date 2023-10-30
     vector<vector<int>> permute(vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> ans;
+        vector<int> path(n);
+
+        set<int> unused(nums.begin(), nums.end());
+
+        function<void(int)> dfs = [&](int i) {
+            if (i == n) {
+                ans.emplace_back(path);
+                return;
+            }
+            set<int> unused_copy = unused;
+            for (auto num : unused_copy) { //枚举
+                path[i] = num;
+                unused.erase(num);
+                dfs(i + 1);
+                unused.insert(num);
+            }
+        };
+
+        dfs(0);
+        return ans;
+    }
+
+    // 用bool数组记录
+    vector<vector<int>> permute1(vector<int>& nums) {
         int n = nums.size();
         vector<vector<int>> ans;
         vector<int> path(n);

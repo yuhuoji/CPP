@@ -9,12 +9,11 @@ public:
     // max(论文数量&引用次数)
     // REVIEW @date 2023-10-29
 
-    // 二分
+    //二分
     int hIndex(vector<int>& citations) {
         int n = citations.size();
-        int l = 0, r = n;
+        int l = 1, r = n;
 
-        // 判断是否有cnt个数大于等于cnt
         function<bool(int)> check = [&](int k) {
             int cnt = 0;
             for (const auto& i : citations) {
@@ -28,12 +27,40 @@ public:
         while (l <= r) {
             int m = ((r - l) >> 1) + l;
             if (check(m)) {
-                l = m + 1; //[m,r] -> [m+1,r]
+                l = m + 1; //[m,r)
             } else {
-                r = m - 1; //[l,m-1]
+                r = m - 1; //[l,m)
             }
         }
         return r;
+    }
+
+    // 二分h, 最小的最大值, [l,r)
+    int hIndex3(vector<int>& citations) {
+        int n = citations.size();
+        int l = 0, r = n + 1;
+
+        // 判断是否有cnt个数大于等于cnt
+        function<bool(int)> check = [&](int k) {
+            int cnt = 0;
+            for (const auto& i : citations) {
+                if (i >= k) {
+                    cnt++;
+                }
+            }
+            return cnt >= k;
+        };
+
+        //[l,r)
+        while (l < r) {
+            int m = ((r - l) >> 1) + l;
+            if (check(m)) {
+                l = m + 1; //[m,r)
+            } else {
+                r = m; //[l,m)
+            }
+        }
+        return l - 1;
     }
 
     // 计数排序, 统计当前引用次数的论文有几篇

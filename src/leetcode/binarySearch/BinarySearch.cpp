@@ -6,9 +6,9 @@ public:
     // 闭区间写法[l,r]
     // *第一个>=target的位置
     // 四种可以相互转换(整数)
-    // 最后一个<target的位置 binarySearch(>=target) - 1
-    // 第一个>target的位置 binarySearch(>=target+1)
-    // 最后一个<=target的位置, 转换成binarySearch(>target) - 1, binarySearch(>=target+1) - 1
+    // 最后一个<target的位置 binarySearch2(>=target) - 1
+    // 第一个>target的位置 binarySearch2(>=target+1)
+    // 最后一个<=target的位置, 转换成binarySearch(>target) - 1, binarySearch2(>=target+1) - 1
     int binarySearch(vector<int> nums, int target) {
         int n = nums.size();
         int l = 0;

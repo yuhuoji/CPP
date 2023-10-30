@@ -6,26 +6,37 @@ namespace solution22 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    //TODO @date 2023-10-29
-    // 选或不选
-    
-//        vector<string> generateParenthesis(int n) {
-//            vector<string> ans;
-//            string path;
-//
-//            //当前排i位置, (数量是left
-//            //)数量是i-left
-//            function<void(int, int)> dfs = [&](int i, int left) {
-//                if (i==2*n){
-//                    ans.push_back(path);
-//                    return ;
-//                }
-//                if ()
-//            };
-//
-//            dfs(0,0);
-//            return ans;
-//        }
+    //REVIEW @date 2023-10-30
+    // TODO @date 2023-10-29
+
+    // 当前位置选或不选
+    vector<string> generateParenthesis(int n) {
+        vector<string> ans;
+        string path;
+
+        // 当前排i位置,
+        // ( = left, ) = i-left
+        // 总数是2n
+        function<void(int, int)> dfs = [&](int i, int left) {
+            if (i == 2 * n) {
+                ans.push_back(path);
+                return;
+            }
+            if (left < n) { // 可以排左括号
+                path.push_back('(');
+                dfs(i + 1, left + 1);
+                path.pop_back();
+            }
+            if (i - left < left) {
+                path.push_back(')');
+                dfs(i + 1, left);
+                path.pop_back();
+            }
+        };
+
+        dfs(0, 0);
+        return ans;
+    }
 
     vector<string> generateParenthesis1(int n) {
         vector<string> ans;
@@ -49,7 +60,7 @@ public:
             }
         };
 
-        dfs(n, n); //n对括号
+        dfs(n, n); // n对括号
         return ans;
     }
 };
