@@ -5,20 +5,20 @@ using namespace std;
 namespace solution162 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-public:
     // nums[i] != nums[i + 1] for all valid i.
+public:
+    //l左侧是峰顶左侧，r右侧是峰顶或峰顶右侧，就能找到峰顶了
     int findPeakElement(vector<int>& nums) {
         int n = nums.size();
         int l = 0;
-        int r = n - 2; // n-1 位置一定是封顶或峰顶右侧
-        //TODO @date 2023-10-17
-        // [0,n-2]上二分？？
+        int r = n - 2; // n-1 位置一定是封顶或峰顶右侧, 避免m=n-1特判
+        //[0] [n-1]
         while (l <= r) {
             int m = ((r - l) >> 1) + l;
             if (nums[m] > nums[m + 1]) {
-                r = m - 1;
-            } else { // <
-                l = m + 1;
+                r = m - 1; //>, m+1一定不是
+            } else {
+                l = m + 1; //<=, m一定不是，m+1可能是
             }
         }
         return l;
