@@ -6,9 +6,9 @@ namespace solution42 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    //TODO @date 2023-10-08
-    // 单调栈，横着计算
-    // 找下一个>=的数
+    // TODO @date 2023-10-08
+    //  单调栈，横着计算
+    //  找下一个>=的数
     int trap(vector<int>& height) {
         int n = height.size();
         int ans = 0;
@@ -22,8 +22,8 @@ public:
                     break;
                 }
                 int left = stk.top();
-                int diff_h =min(height[left],h)-bottom_h;
-                ans+= diff_h*(i-left-1);
+                int diff_h = min(height[left], h) - bottom_h;
+                ans += diff_h * (i - left - 1);
             }
             stk.push(i);
         }

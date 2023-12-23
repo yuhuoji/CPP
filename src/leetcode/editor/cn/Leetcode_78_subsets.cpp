@@ -6,10 +6,11 @@ namespace solution78 {
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    //REVIEW @date 2023-10-26
+    // REVIEW @date 2023-10-26
 
     // 答案视角
     // 每个节点都是答案
+    // 枚举选哪个
     vector<vector<int>> subsets(vector<int>& nums) {
         int n = nums.size();
         vector<vector<int>> ans;
@@ -32,7 +33,8 @@ public:
     }
 
     // 输入视角
-    // 每次选or不选，每个路径都是答案
+    // 每个路径都是答案
+    // 选or不选
     vector<vector<int>> subsets1(vector<int>& nums) {
         int n = nums.size();
         vector<vector<int>> ans;

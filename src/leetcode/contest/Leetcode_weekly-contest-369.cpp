@@ -8,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    //TODO @date 2023-10-29
+    // TODO @date 2023-10-29
     //
     int maximumPoints(vector<vector<int>>& edges, vector<int>& coins, int k) {
     }
@@ -74,29 +74,18 @@ public:
         return max(sum1 + cnt1, sum2 + cnt2);
     }
 
-    // 位运算
+    //  2917位运算
     int findKOr(vector<int>& nums, int k) {
         int n = nums.size();
         int ans = 0; // K-or
 
-        auto it = max_element(nums.begin(), nums.end());
-        int max_value = *it;
-        int m = 0;
-        while (max_value > 0) {
-            m++;
-            // 右移一位
-            max_value = max_value >> 1;
-        }
-
-        for (int i = 0; i < m; ++i) { // i位
+        for (int i = 0; i < 32; ++i) { // i位，0..31
             int cnt = 0;
-            for (int j = 0; j < n; ++j) {
-                if (((1 << i) & nums[j]) == (1 << i)) {
-                    cnt++;
-                }
+            for (auto x : nums) { // 枚举所有数
+                cnt += (x >> i & 1);
             }
             if (cnt >= k) {
-                ans += (1 << i);
+                ans |= (1 << i); //
             }
         }
 

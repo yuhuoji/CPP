@@ -29,7 +29,6 @@ public:
                 while (second < third && nums[second] + nums[third] > target) { // 大了
                     third--;
                 }
-
                 if (second == third) { // 后续j > k，无解
                     break;
                 }

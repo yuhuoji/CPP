@@ -305,3 +305,5 @@ add_executable(Leetcode_117_populating-next-right-pointers-in-each-node-ii src/l
 set_target_properties(Leetcode_117_populating-next-right-pointers-in-each-node-ii PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
 add_executable(Leetcode_102_binary-tree-level-order-traversal src/leetcode/editor/cn/Leetcode_102_binary-tree-level-order-traversal.cpp)
 set_target_properties(Leetcode_102_binary-tree-level-order-traversal PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
+add_executable(test_2 test/test_2.cpp)
+set_target_properties(test_2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY "build")
